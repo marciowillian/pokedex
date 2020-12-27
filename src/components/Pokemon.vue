@@ -2,6 +2,15 @@
     <div>
         <h1>{{ num }} {{ name | upper }}</h1>
         <small>{{ url }}</small>
+
+        
+        <v-card
+            elevation="2"
+            outlined
+            shaped
+            tile
+        ></v-card>
+
     </div>
 </template>
 
