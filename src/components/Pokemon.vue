@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <small>{{ url }}</small>
 
     <v-card max-height="300" max-width="450">
@@ -66,4 +66,10 @@ export default {
 </script>
 
 <style scoped>
+
+.content {
+  display: flex;
+  align-content: center;
+}
+
 </style>
