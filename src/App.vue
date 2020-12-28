@@ -1,48 +1,36 @@
 <template>
   <div id="app">
-
     
+          <div v-for="(poke, index) in pokemons" :key="poke.url">
+            <Pokemon :name="poke.name" :url="poke.url" :num="index + 1" />
+          </div>
 
-    <div v-for="(poke, index) in pokemons" :key="poke.url">
-      <Pokemon :name="poke.name" :url="poke.url" :num="index + 1"/>
-      
-    </div>
-
+    <div></div>
   </div>
 </template>
 
 <script>
-
-import Pokemons from './services/pokemons'
-import Pokemon from './components/Pokemon'
+import Pokemon from "./components/Pokemon";
+import Pokemons from "./services/pokemons";
 
 export default {
-  name: 'App',
+  name: "App",
+
   components: {
     Pokemon,
   },
-  data(){
-    return {
-      pokemons: []
-    }
+
+  data: () => ({
+    pokemons: [],
+  }),
+  created: function () {},
+  mounted() {
+    Pokemons.find().then((res) => {
+      this.pokemons = res.data.results;
+    });
   },
-  created: function(){
-  },
-   mounted(){
-     Pokemons.find().then((res)=>{
-       this.pokemons = res.data.results
-     })
-   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
 </style>
